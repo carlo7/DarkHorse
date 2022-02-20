@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "30995042526",
+    "project_id": "darkhorse-3673b",
+    "storage_bucket": "darkhorse-3673b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30995042526:android:c4e88b3d3267f892c8324f",
+        "android_client_info": {
+          "package_name": "com.example.darkhorse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30995042526-3163ip9o3le1vfekcdd3r5uo1k66pl1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHZ8FatzBdkmEgXfdDu-cj_2g4BKvtXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30995042526-3163ip9o3le1vfekcdd3r5uo1k66pl1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
