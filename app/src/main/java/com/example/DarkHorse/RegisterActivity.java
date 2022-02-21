@@ -3,9 +3,9 @@ package com.example.DarkHorse;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,10 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(email)) {
             editRegEmail.setError("email cannot be empty");
             editRegEmail.requestFocus();
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                editRegEmail.setError("please provide valid email");
-                editRegEmail.requestFocus();
-            }
 
         } else if (TextUtils.isEmpty(password)) {
             editRegPassword.setError("password cannot be empty");

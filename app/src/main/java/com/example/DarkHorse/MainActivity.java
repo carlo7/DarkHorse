@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -24,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
      @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-         mAuth= FirebaseAuth.getInstance();
 
 
         com.example.DarkHorse.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -55,15 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    @Override //This methods check if the user is current logged in, if not he/she is directed to the the Login page
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user=mAuth.getCurrentUser();
-        if (user==null){
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-        }
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    @Override //This methods check if the user is current logged in, if not he/she is directed to the the Login page
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user= mAuth.getCurrentUser();
+        if (user==null){
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        }
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
