@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DarkHorse"
         android:allowBackup="true">
+
         <activity
             android:name="com.example.DarkHorse.RegisterActivity"
             android:exported="false" />

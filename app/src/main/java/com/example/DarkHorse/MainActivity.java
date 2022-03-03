@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,33 +15,30 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.DarkHorse.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth mAuth;
+    AppBarConfiguration mAppBarConfiguration;
+
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         mAuth= FirebaseAuth.getInstance();
+
+
+
+
 
 
         com.example.DarkHorse.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -53,9 +51,23 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+         mAuth=FirebaseAuth.getInstance();
+         Button button= findViewById(R.id.btnOut);
+
+
+         button.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 mAuth.signOut();
+                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+             }
+         });
+
+
+
 
     }
-    @Override //This methods check if the user is current logged in, if not he/she is directed to the the Login page
+    @Override //This methods checks if the user is current logged in, if not he/she is directed to the the Login page
     protected void onStart() {
         super.onStart();
         FirebaseUser user=mAuth.getCurrentUser();
@@ -79,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 
 }
