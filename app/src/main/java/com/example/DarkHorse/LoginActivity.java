@@ -1,15 +1,16 @@
 package com.example.DarkHorse;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,9 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
         editLogEmail = findViewById(R.id.logEmailAddress);
         editLogPassword = findViewById(R.id.editTextTextPassword3);
+        mAuth = FirebaseAuth.getInstance();
         Button button = findViewById(R.id.btnLog);
         TextView btn = findViewById(R.id.TextViewSignUp);
 
@@ -46,18 +47,19 @@ public class LoginActivity extends AppCompatActivity {
 
         );
 
-
     }
+    //Entry field checks to ensure correct credentials for authentication
     private void loginUser(){
         String email = editLogEmail.getText().toString();
         String password = editLogPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            editLogEmail.setError("email cannot be empty");
+            editLogEmail.setError("please fill both the fields");
             editLogEmail.requestFocus();
 
+
         } else if (TextUtils.isEmpty(password)) {
-            editLogPassword.setError("password cannot be empty");
+            editLogPassword.setError("please fill both the fields");
             editLogPassword.requestFocus();
 
         }

@@ -31,14 +31,15 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth=FirebaseAuth.getInstance();
-
         editName = findViewById(R.id.editTextTextPersonName);
         editRegEmail = findViewById(R.id.editTextTextEmailAddress);
         editRegPassword = findViewById(R.id.editTextTextPassword);
         editConReg = findViewById(R.id.editTextTextPassword2);
+
+        mAuth=FirebaseAuth.getInstance();
+
         Button btnReg = findViewById(R.id.btnReg);
-        TextView btn = findViewById(R.id.AlreadyHaveAccount);
+        TextView btn = findViewById(R.id.TextViewSignIn);
 
 
         btn.setOnClickListener(view -> startActivity(new Intent
@@ -67,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
             editRegEmail.setError("email cannot be empty");
             editRegEmail.requestFocus();
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                editRegEmail.setError("please provide valid email");
+                editRegEmail.setError("email cannot be empty");
                 editRegEmail.requestFocus();
             }
 

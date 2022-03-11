@@ -11,12 +11,15 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_share">Share</string>
-    <string name="share">Share</string>
+    <string name="menu_logout">Logout</string>
+
+
     <string name="already_have_an_account">already have an account?</string>
     <string name="register">register</string>
 
     <string name="email">email</string>
     <string name="username">username</string>
+    <string name="share">Share</string>
     <string name="logout">Logout</string>
 
 

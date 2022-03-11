@@ -87,6 +87,7 @@
         android:drawableLeft="@drawable/password_img"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:hint="password"
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
@@ -94,7 +95,6 @@
         android:paddingBottom="10dp"
         android:textColorHint="#958282"
         android:textSize="24sp"
-        android:hint="password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
@@ -111,6 +111,7 @@
         android:drawableLeft="@drawable/password_img"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:hint="confirm password"
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
@@ -118,7 +119,6 @@
         android:paddingBottom="10dp"
         android:textColorHint="#958282"
         android:textSize="24sp"
-        android:hint="confirm password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
@@ -139,17 +139,32 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
 
-    <TextView
-        android:id="@+id/AlreadyHaveAccount"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/already_have_an_account"
-        android:textColor="@color/black"
-        android:textSize="22sp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReg" />
+        app:layout_constraintTop_toBottomOf="@+id/btnReg">
+        <TextView
+            android:id="@+id/AlreadyHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_account"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:id="@+id/TextViewSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBarReg"
@@ -163,6 +178,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="missing constraints" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,6 @@ package com.example.DarkHorse;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,11 +12,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.DarkHorse.databinding.ActivityMainBinding;
+import com.example.DarkHorse.ui.logout.LogoutFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LogoutFragment.FragmentListener {
 
     FirebaseAuth mAuth;
     AppBarConfiguration mAppBarConfiguration;
@@ -27,12 +26,6 @@ public class MainActivity extends AppCompatActivity {
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
-
 
         com.example.DarkHorse.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -52,30 +45,18 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
          mAuth=FirebaseAuth.getInstance();
-         Button button= findViewById(R.id.btnOut);
-
-
-         button.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 mAuth.signOut();
-                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
-             }
-         });
-
-
-
 
     }
-    @Override //This methods checks if the user is current logged in, if not he/she is directed to the the Login page
+    //This methods checks if the user is current logged_in, if not, user is directed to the the Login page
+    @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user=mAuth.getCurrentUser();
         if (user==null){
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
         }
+     }
 
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    //This callback implements a method in FragmentListener in LogoutFragment
+    //The implementation method signs out the user on button click and redirects him/her to the Login page
+    @Override
+    public void onClickButton() {
 
+     mAuth.signOut();
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+    }
 
 }
